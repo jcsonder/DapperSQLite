@@ -1,5 +1,14 @@
-Sources:
+https://github.com/StackExchange/Dapper
 
-SQLite Code:
+SQLite Example Code:
 https://blog.tigrangasparian.com/2012/02/09/getting-started-with-sqlite-in-c-part-one/
 
+Dapper & WebAPI
+https://www.jeremymorgan.com/blog/programming/how-to-dapper-web-api/
+
+https://www.davepaquette.com/archive/2018/01/22/loading-an-object-graph-with-dapper.aspx
+
+Dapper & SQLite
+https://github.com/mercury2269/SQLiteDemo
+	
+https://medium.com/dapper-net/get-started-with-dapper-net-591592c335aa

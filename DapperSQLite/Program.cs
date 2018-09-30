@@ -2,24 +2,36 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using Dapper;
+using DapperSQLite.Model;
 
 namespace DapperSQLite
 {
     class Program
     {
+        private const string DatabaseFileName = "MyDatabase.sqlite";
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello SQLite!");
+            Console.WriteLine("Hello SQLite and Dapper!");
 
-            SQLiteConnection.CreateFile("MyDatabase.sqlite");
+            bool createNewDatabase = !File.Exists(DatabaseFileName);
+            if (createNewDatabase)
+            {
+                SQLiteConnection.CreateFile(DatabaseFileName);
+            }
 
             using (SQLiteConnection connection = SetupConnection())
             {
-                CreateDatabase(connection);
+                if (createNewDatabase)
+                {
+                    CreateDatabase(connection);
+                }
+
                 SeedData(connection);
-                ReadData(connection);
-                ReadStructuredData(connection);
+
+                ReadHighscores(connection);
             }
 
             Console.ReadLine();
@@ -34,7 +46,7 @@ namespace DapperSQLite
 
         private static void CreateDatabase(SQLiteConnection connection)
         {
-            string sql = "create table highscores (id integer primary key autoincrement, name varchar(20), score int)";
+            string sql = "create table highscore (id integer primary key autoincrement, name varchar(20), score int)";
             SQLiteCommand command = new SQLiteCommand(sql, connection);
             command.ExecuteNonQuery();
         }
@@ -49,36 +61,20 @@ namespace DapperSQLite
         private static void AddNewHighscore(SQLiteConnection connection, string name, int score)
         {
             // todo: Prevent SQL injection, use parameters
-            var sql = $"insert into highscores (name, score) values ('{name}', {score})";
+            var sql = $"insert into highscore (name, score) values ('{name}', {score})";
             var command = new SQLiteCommand(sql, connection);
             command.ExecuteNonQuery();
         }
 
-        private static void ReadData(SQLiteConnection connection)
+        private static void ReadHighscores(IDbConnection connection)
         {
-            string query = "select * from highscores order by score desc";
-            SQLiteCommand command = new SQLiteCommand(query, connection);
-            SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-                Console.WriteLine($"Id: {reader["id"]}\tName: {reader["name"]}\tScore: {reader["score"]}");
-        }
-
-        private static void ReadStructuredData(IDbConnection connection)
-        {
-            string query = "select * from highscores";
+            string query = "select id, name, score from highscore";
             IEnumerable<Highscore> highscores = connection.Query<Highscore>(query);
 
             foreach (Highscore highscore in highscores)
             {
                 Console.WriteLine($"{highscore.Id}-{highscore.Name}-{highscore.Score}");
             }
-        }
-
-        public class Highscore
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public int Score { get; set; }
         }
     }
 }
