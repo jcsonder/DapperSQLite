@@ -58,7 +58,7 @@ namespace DapperSQLite
             SQLiteCommand command = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                Console.WriteLine("Id: " + reader["id"] + "\tName: " + reader["name"] + "\tScore: " + reader["score"]);
+                Console.WriteLine($"Id: {reader["id"]}\tName: {reader["name"]}\tScore: {reader["score"]});
         }
 
         private static void ReadStructuredData(IDbConnection connection)
@@ -68,7 +68,7 @@ namespace DapperSQLite
 
             foreach (Highscore highscore in highscores)
             {
-                Console.WriteLine(string.Format("{0}-{1}-{2}", highscore.Id, highscore.Name, highscore.Score));
+                Console.WriteLine($"{highscore.Id}-{highscore.Name}-{highscore.Score}");
             }
         }
 
