@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using Dapper;
 
@@ -17,6 +19,7 @@ namespace DapperSQLite
                 CreateDatabase(connection);
                 SeedData(connection);
                 ReadData(connection);
+                ReadStructuredData(connection);
             }
 
             Console.ReadLine();
@@ -58,15 +61,18 @@ namespace DapperSQLite
                 Console.WriteLine("Id: " + reader["id"] + "\tName: " + reader["name"] + "\tScore: " + reader["score"]);
         }
 
-        //private static void ReadStructuredData(SQLiteConnection connection)
-        //{
-        //    string query = "select * from highscores order by score desc";
-        //    HighScore highScore = await connection.QuerySingleAsync<HighScore>(query, new { Id = id });
+        private static void ReadStructuredData(IDbConnection connection)
+        {
+            string query = "select * from highscores";
+            IEnumerable<Highscore> highscores = connection.Query<Highscore>(query);
 
-        //    Console.WriteLine(string.Format("{0}-{1}-{2}", highScore.Id, highScore.Name, highScore.Score);
-        //}
+            foreach (Highscore highscore in highscores)
+            {
+                Console.WriteLine(string.Format("{0}-{1}-{2}", highscore.Id, highscore.Name, highscore.Score));
+            }
+        }
 
-        public class HighScore
+        public class Highscore
         {
             public int Id { get; set; }
             public string Name { get; set; }
