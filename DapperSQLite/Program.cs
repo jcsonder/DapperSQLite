@@ -41,14 +41,16 @@ namespace DapperSQLite
 
         private static void SeedData(SQLiteConnection connection)
         {
-            string sql = "insert into highscores (name, score) values ('Me', 3000)";
-            SQLiteCommand command = new SQLiteCommand(sql, connection);
-            command.ExecuteNonQuery();
-            sql = "insert into highscores (name, score) values ('Myself', 6000)";
-            command = new SQLiteCommand(sql, connection);
-            command.ExecuteNonQuery();
-            sql = "insert into highscores (name, score) values ('And I', 9001)";
-            command = new SQLiteCommand(sql, connection);
+            AddNewHighscore(connection, "Me", 3000);
+            AddNewHighscore(connection, "Myself", 6000);
+            AddNewHighscore(connection, "And I", 9001);
+        }
+
+        private static void AddNewHighscore(SQLiteConnection connection, string name, int score)
+        {
+            // todo: Prevent SQL injection, use parameters
+            var sql = $"insert into highscores (name, score) values ('{name}', {score})";
+            var command = new SQLiteCommand(sql, connection);
             command.ExecuteNonQuery();
         }
 
@@ -58,7 +60,7 @@ namespace DapperSQLite
             SQLiteCommand command = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                Console.WriteLine($"Id: {reader["id"]}\tName: {reader["name"]}\tScore: {reader["score"]});
+                Console.WriteLine($"Id: {reader["id"]}\tName: {reader["name"]}\tScore: {reader["score"]}");
         }
 
         private static void ReadStructuredData(IDbConnection connection)
