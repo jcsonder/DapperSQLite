@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperSQLite", "DapperSQLite\DapperSQLite.csproj", "{5C76D6EA-D123-49DE-80B9-3F626EA34B00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5CE0F088-6702-4171-8A0A-9117ABD4E8A4}"
+	ProjectSection(SolutionItems) = preProject
+		Info.txt = Info.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C76D6EA-D123-49DE-80B9-3F626EA34B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C76D6EA-D123-49DE-80B9-3F626EA34B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C76D6EA-D123-49DE-80B9-3F626EA34B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C76D6EA-D123-49DE-80B9-3F626EA34B00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ECACB53-A9F9-498E-9AC1-4375C53AB84D}
+	EndGlobalSection
+EndGlobal
