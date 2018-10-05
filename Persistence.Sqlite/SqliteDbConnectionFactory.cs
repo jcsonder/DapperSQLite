@@ -15,7 +15,17 @@
                 SQLiteConnection.CreateFile(databaseFileName);
             }
 
-            return SetupConnection();
+            var connection = SetupConnection();
+
+            if (createNewDatabase)
+            {
+                // todo: Move code away from here
+                connection.Open();
+                CreateDatabase(connection);
+                connection.Close();
+            }
+
+            return connection;
         }
 
         private static SQLiteConnection SetupConnection()
@@ -24,7 +34,7 @@
             return connection;
         }
 
-        // todo: Move code to Persistence namespace
+        // todo: Move code away from here
         private static void CreateDatabase(SQLiteConnection connection)
         {
             string sql = "create table highscore (id integer primary key autoincrement, name varchar(20), score int)";
