@@ -25,7 +25,7 @@ namespace Persistence.Repositories
         {
             highscore.Id = Connection.ExecuteScalar<int>(
                 "INSERT INTO Highscore(Name, Score) VALUES (@Name, @Score)",
-                //"INSERT INTO highscore(Name, Score) VALUES(@Name, @Score); SELECT SCOPE_IDENTITY()",
+                //TSQL: "INSERT INTO highscore(Name, Score) VALUES(@Name, @Score); SELECT SCOPE_IDENTITY()",
                 param: new { Name = highscore.Name, Score = highscore.Score },
             transaction: Transaction);
         }
