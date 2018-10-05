@@ -1,4 +1,4 @@
-﻿namespace Persistence.Entities
+﻿namespace Domain.Entities
 {
     public class Highscore
     {

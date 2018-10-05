@@ -7,35 +7,41 @@
 
     public class SqliteDbConnectionFactory : IDbConnectionFactory
     {
-        public IDbConnection Create(string databaseFileName)
+        private readonly string _databaseFileName;
+
+        public SqliteDbConnectionFactory(string databaseFileName)
         {
-            bool createNewDatabase = !File.Exists(databaseFileName);
-            if (createNewDatabase)
+            _databaseFileName = databaseFileName;
+        }
+
+        public IDbConnection Create()
+        {
+            return SetupConnection();
+        }
+
+        public void CreateDatabase()
+        {
+            if (File.Exists(_databaseFileName))
             {
-                SQLiteConnection.CreateFile(databaseFileName);
+                File.Delete(_databaseFileName);
             }
 
-            var connection = SetupConnection();
-
-            if (createNewDatabase)
+            SQLiteConnection.CreateFile(_databaseFileName);
+            using (var connection = SetupConnection())
             {
-                // todo: Move code away from here
                 connection.Open();
                 CreateDatabase(connection);
                 connection.Close();
             }
-
-            return connection;
         }
 
-        private static SQLiteConnection SetupConnection()
+        private SQLiteConnection SetupConnection()
         {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            return connection;
+            return new SQLiteConnection($"Data Source={_databaseFileName};Version=3;");
         }
 
         // todo: Move code away from here
-        private static void CreateDatabase(SQLiteConnection connection)
+        private void CreateDatabase(SQLiteConnection connection)
         {
             string sql = "CREATE TABLE Highscore (Id integer primary key autoincrement, Name varchar(20), Score int)";
             SQLiteCommand command = new SQLiteCommand(sql, connection);

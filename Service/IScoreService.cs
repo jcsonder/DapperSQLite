@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Domain.Entities;
 
-namespace Persistence.Repositories
+namespace Service
 {
-    public interface IScoreRepository
+    public interface IScoreService
     {
         IEnumerable<Highscore> GetHighscores();
 

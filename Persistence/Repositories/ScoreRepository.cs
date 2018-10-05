@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using Persistence.Entities;
-using Dapper;
 using System.Linq;
+using Domain.Entities;
+using Dapper;
 
 namespace Persistence.Repositories
 {

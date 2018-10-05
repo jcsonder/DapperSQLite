@@ -1,6 +1,6 @@
-﻿using Persistence;
-using Persistence.Entities;
+﻿using Domain.Entities;
 using Persistence.Sqlite;
+using Service;
 using System;
 
 namespace ConsoleApp1
@@ -9,18 +9,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            const string dbFileName = "Scores.sqlite";
+
             Console.WriteLine("Hello World!");
 
-            var connectionFactory = new SqliteDbConnectionFactory();
-            using (var uow = new UnitOfWork(connectionFactory, "DatabaseFileName"))
-            {
-                uow.ScoreRepository.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
+            var dbConnectionFactor = new SqliteDbConnectionFactory(dbFileName);
+            dbConnectionFactor.CreateDatabase();
 
-                var highscores = uow.ScoreRepository.GetHighscores();
-                foreach(var highscore in highscores)
-                {
-                    Console.WriteLine(highscore);
-                }
+            ScoreService scoreService = new ScoreService(dbConnectionFactor);
+            scoreService.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
+
+            var highscores = scoreService.GetHighscores();
+            foreach (var highscore in highscores)
+            {
+                Console.WriteLine(highscore);
             }
 
             Console.ReadLine();

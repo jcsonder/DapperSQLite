@@ -12,16 +12,9 @@ namespace Persistence
         private IScoreRepository _scoreRepository;
         private bool _disposed;
 
-        public UnitOfWork(IDbConnectionFactory connectionFactory, string connectionString)
+        public UnitOfWork(IDbConnectionFactory connectionFactory)
         {
-            _connection = connectionFactory.Create(connectionString);
-            _connection.Open();
-            _transaction = _connection.BeginTransaction();
-        }
-
-        public UnitOfWork(string connectionString)
-        {
-            _connection = new SqlConnection(connectionString);
+            _connection = connectionFactory.Create();
             _connection.Open();
             _transaction = _connection.BeginTransaction();
         }
