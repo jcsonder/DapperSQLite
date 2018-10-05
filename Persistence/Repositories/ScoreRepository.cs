@@ -16,17 +16,18 @@ namespace Persistence.Repositories
         public IEnumerable<Highscore> GetHighscores()
         {
             return Connection.Query<Highscore>(
-                "SELECT id, name, score " +
-                "FROM highscore", Transaction)
+                "SELECT Id, Name, Score " +
+                "FROM Highscore", Transaction)
                 .ToList();
         }
 
-        //public void AddHighscore(Highscore highscore)
-        //{
-        //    // todo: Prevent SQL injection, use parameters
-        //    var sql = $"insert into highscore (name, score) values ('{name}', {score})";
-        //    var command = new SQLiteCommand(sql, connection);
-        //    command.ExecuteNonQuery();
-        //}
+        public void AddHighscore(Highscore highscore)
+        {
+            highscore.Id = Connection.ExecuteScalar<int>(
+                "INSERT INTO Highscore(Name, Score) VALUES (@Name, @Score)",
+                //"INSERT INTO highscore(Name, Score) VALUES(@Name, @Score); SELECT SCOPE_IDENTITY()",
+                param: new { Name = highscore.Name, Score = highscore.Score },
+            transaction: Transaction);
+        }
     }
 }

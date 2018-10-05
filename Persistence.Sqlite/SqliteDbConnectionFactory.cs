@@ -37,7 +37,7 @@
         // todo: Move code away from here
         private static void CreateDatabase(SQLiteConnection connection)
         {
-            string sql = "create table highscore (id integer primary key autoincrement, name varchar(20), score int)";
+            string sql = "CREATE TABLE Highscore (Id integer primary key autoincrement, Name varchar(20), Score int)";
             SQLiteCommand command = new SQLiteCommand(sql, connection);
             command.ExecuteNonQuery();
         }

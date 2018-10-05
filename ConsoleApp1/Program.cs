@@ -1,4 +1,5 @@
 ﻿using Persistence;
+using Persistence.Entities;
 using Persistence.Sqlite;
 using System;
 
@@ -13,17 +14,16 @@ namespace ConsoleApp1
             var connectionFactory = new SqliteDbConnectionFactory();
             using (var uow = new UnitOfWork(connectionFactory, "DatabaseFileName"))
             {
-                var x = uow.ScoreRepository.GetHighscores();
+                uow.ScoreRepository.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
+
+                var highscores = uow.ScoreRepository.GetHighscores();
+                foreach(var highscore in highscores)
+                {
+                    Console.WriteLine(highscore);
+                }
             }
 
             Console.ReadLine();
         }
-
-        //private static void SeedData(SQLiteConnection connection)
-        //{
-        //    AddNewHighscore(connection, "Me", 3000);
-        //    AddNewHighscore(connection, "Myself", 6000);
-        //    AddNewHighscore(connection, "And I", 9001);
-        //}
     }
 }
