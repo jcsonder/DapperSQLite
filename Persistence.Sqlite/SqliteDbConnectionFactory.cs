@@ -21,10 +21,10 @@
         private static SQLiteConnection SetupConnection()
         {
             SQLiteConnection connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            connection.Open();
             return connection;
         }
 
+        // todo: Move code to Persistence namespace
         private static void CreateDatabase(SQLiteConnection connection)
         {
             string sql = "create table highscore (id integer primary key autoincrement, name varchar(20), score int)";

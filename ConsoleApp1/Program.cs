@@ -1,24 +1,20 @@
-﻿using System;
-using Persistence;
+﻿using Persistence;
 using Persistence.Sqlite;
+using System;
 
-namespace DapperSQLite
+namespace ConsoleApp1
 {
     class Program
     {
-        private const string DatabaseFileName = "MyDatabase.sqlite";
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello SQLite and Dapper!");
+            Console.WriteLine("Hello World!");
 
-            using (var uow = new UnitOfWork(new SqliteDbConnectionFactory(), "DatabaseFileName"))
+            var connectionFactory = new SqliteDbConnectionFactory();
+            using (var uow = new UnitOfWork(connectionFactory, "DatabaseFileName"))
             {
                 var x = uow.ScoreRepository.GetHighscores();
             }
-
-            //SeedData(connection);
-            //ReadHighscores(connection);
 
             Console.ReadLine();
         }
