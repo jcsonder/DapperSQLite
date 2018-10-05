@@ -12,3 +12,6 @@ Dapper & SQLite
 https://github.com/mercury2269/SQLiteDemo
 	
 https://medium.com/dapper-net/get-started-with-dapper-net-591592c335aa
+
+DapperUnitOfWork
+https://github.com/timschreiber/DapperUnitOfWork/

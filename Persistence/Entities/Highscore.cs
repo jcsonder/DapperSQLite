@@ -1,6 +1,6 @@
-﻿namespace DapperSQLite.Model
+﻿namespace Persistence.Entities
 {
-    internal class Highscore
+    public class Highscore
     {
         public int Id { get; set; }
         public string Name { get; set; }
