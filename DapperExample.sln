@@ -12,7 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{B5914D5C-2C03-4A24-9B93-4001F38CEAAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Sqlite", "Persistence.Sqlite\Persistence.Sqlite.csproj", "{055D8A18-DA7A-405C-9F58-AAE42DD73193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Sqlite", "Persistence.Sqlite\Persistence.Sqlite.csproj", "{055D8A18-DA7A-405C-9F58-AAE42DD73193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Executables", "Executables", "{65F292C3-16A2-4228-9248-78AA5581B5EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{8011307E-6472-42C4-B706-2004EE26CD9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5C76D6EA-D123-49DE-80B9-3F626EA34B00} = {65F292C3-16A2-4228-9248-78AA5581B5EC}
+		{B5914D5C-2C03-4A24-9B93-4001F38CEAAE} = {8011307E-6472-42C4-B706-2004EE26CD9B}
+		{055D8A18-DA7A-405C-9F58-AAE42DD73193} = {8011307E-6472-42C4-B706-2004EE26CD9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5ECACB53-A9F9-498E-9AC1-4375C53AB84D}
