@@ -37,7 +37,8 @@
 
         private SQLiteConnection SetupConnection()
         {
-            return new SQLiteConnection($"Data Source={_databaseFileName};Version=3;");
+            string connectionString = $"Data Source={_databaseFileName};Version=3;";
+            return new SQLiteConnection(connectionString);
         }
 
         // todo: Move code away from here

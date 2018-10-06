@@ -2,6 +2,7 @@
 using Persistence.Sqlite;
 using Service;
 using System;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -14,7 +15,10 @@ namespace ConsoleApp1
             Console.WriteLine("Hello World!");
 
             var dbConnectionFactor = new SqliteDbConnectionFactory(dbFileName);
-            dbConnectionFactor.CreateDatabase();
+            if (!File.Exists(dbFileName))
+            {
+                dbConnectionFactor.CreateDatabase();
+            }
 
             ScoreService scoreService = new ScoreService(dbConnectionFactor);
             scoreService.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
