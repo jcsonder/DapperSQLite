@@ -14,6 +14,7 @@ namespace ConsoleApp1
 
             Console.WriteLine("Hello World!");
 
+            // todo: Use dependency injection
             var dbConnectionFactor = new SqliteDbConnectionFactory(dbFileName);
             if (!File.Exists(dbFileName))
             {
