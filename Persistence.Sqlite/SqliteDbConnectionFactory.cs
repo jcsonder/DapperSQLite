@@ -37,7 +37,9 @@
 
         private SQLiteConnection SetupConnection()
         {
-            string connectionString = $"Data Source={_databaseFileName};Version=3;";
+            // todo: without this full path connection string, the asp.net app doesn't find the db
+            string connectionString = $@"Data Source=C:\Users\Rob-Desktop\Source\Repos\DapperSQLite\bin\Debug\netcoreapp2.1\{_databaseFileName};Version=3;";
+            //string connectionString = $"Data Source={_databaseFileName};Version=3;";
             return new SQLiteConnection(connectionString);
         }
 
