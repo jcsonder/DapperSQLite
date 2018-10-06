@@ -12,17 +12,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Sqlite", "Persistence.Sqlite\Persistence.Sqlite.csproj", "{055D8A18-DA7A-405C-9F58-AAE42DD73193}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Executables", "Executables", "{65F292C3-16A2-4228-9248-78AA5581B5EC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fontend", "Fontend", "{65F292C3-16A2-4228-9248-78AA5581B5EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{8011307E-6472-42C4-B706-2004EE26CD9B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{2D3308EC-38D9-47D8-AFB7-C2AA932763A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{2CB08FF1-36D7-4423-8797-EA5AD43216A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{2CB08FF1-36D7-4423-8797-EA5AD43216A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{A4424C72-98B0-4A4C-9A37-03D689E4784A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{FF2EE134-1B99-411A-856D-0654A9A3492D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{FF2EE134-1B99-411A-856D-0654A9A3492D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{99B20820-36B8-433A-94D3-20B73777C944}"
 EndProject
