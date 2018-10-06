@@ -23,9 +23,12 @@ namespace Persistence.Repositories
 
         public void AddHighscore(Highscore highscore)
         {
+            // todo: SQL commands&queries are DB specific -> Move to a DB specific namespace.
+            // TSQL:   "INSERT INTO Highscore (Name, Score) VALUES (@Name, @Score); SELECT SCOPE_IDENTITY()",
+            // SQLite: "INSERT INTO Highscore (Name, Score) VALUES (@Name, @Score); SELECT last_insert_rowid()"
+
             highscore.Id = Connection.ExecuteScalar<int>(
-                "INSERT INTO Highscore(Name, Score) VALUES (@Name, @Score)",
-                //TSQL: "INSERT INTO highscore(Name, Score) VALUES(@Name, @Score); SELECT SCOPE_IDENTITY()",
+                "INSERT INTO Highscore (Name, Score) VALUES (@Name, @Score); SELECT last_insert_rowid()",
                 param: new { Name = highscore.Name, Score = highscore.Score },
             transaction: Transaction);
         }

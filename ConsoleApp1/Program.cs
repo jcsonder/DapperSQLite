@@ -18,6 +18,7 @@ namespace ConsoleApp1
 
             ScoreService scoreService = new ScoreService(dbConnectionFactor);
             scoreService.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
+            scoreService.AddHighscore(new Highscore() { Name = "Frank", Score = 999 });
 
             var highscores = scoreService.GetHighscores();
             foreach (var highscore in highscores)

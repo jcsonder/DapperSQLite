@@ -25,7 +25,8 @@ namespace Service
         {
             using (var uow = new UnitOfWork(_dbConnectionFactory))
             {
-                uow.ScoreRepository.AddHighscore(new Highscore() { Name = "Fred", Score = 123 });
+                uow.ScoreRepository.AddHighscore(highscore);
+                uow.Commit();
             }
         }
     }
