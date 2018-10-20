@@ -5,7 +5,7 @@ using Persistence;
 using Persistence.Sqlite;
 using Service;
 
-namespace TodoApi.Controllers
+namespace WebApiSerivce.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
