@@ -16,6 +16,7 @@ namespace WebApiSerivce.Controllers
 
         public ValuesController()
         {
+            // todo: Use dependency injection
             _dbConnectionFactory = new SqliteDbConnectionFactory(dbFileName);
         }
 
